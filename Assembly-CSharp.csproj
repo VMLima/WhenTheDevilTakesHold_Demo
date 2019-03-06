@@ -60,7 +60,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\assets\ErbGameArt\Random effects pack\Demo scenes\CameraHolder.cs" />
     <Compile Include="Assets\Scripts\Controller.cs" />
+    <Compile Include="Assets\Scripts\InteractableScript.cs" />
+    <None Include="Assets\assets\ErbGameArt\Random effects pack\Prefabs\ReadMe.txt" />
+    <None Include="Assets\assets\ErbGameArt\Random effects pack\Shaders\Lava.shader" />
+    <None Include="Assets\assets\ErbGameArt\Random effects pack\Shaders\BlackHole.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/user/Documents/Homework/CMPM121/WhenTheDevilTakesHold_Demo/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
