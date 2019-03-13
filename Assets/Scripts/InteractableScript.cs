@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class InteractableScript : MonoBehaviour {
 
-    public GameObject player;
+    //public GameObject player;
+    public GameObject prompt;
     private bool interacting;
     private ParticleSystem[] particles;
-
+    
     void Start() {
         particles = transform.GetComponentsInChildren<ParticleSystem>();
     }
@@ -23,12 +24,26 @@ public class InteractableScript : MonoBehaviour {
             for (int i = 0; i < particles.Length; i++) {
                 particles[i].Play();
             }
+            GetComponent<BoxCollider>().enabled = false;
+            prompt.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Player")) {
+            prompt.SetActive(true);
         }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.CompareTag("Player")) {
             ActivateShrine();
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")) {
+            prompt.SetActive(false);
         }
     }
 }
