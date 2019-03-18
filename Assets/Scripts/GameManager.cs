@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (player.position.y < -5) {
+        if (player.position.y < -11) {
             lowerLevel.SetActive(true);
             upperLevel.SetActive(false);
         } else {
