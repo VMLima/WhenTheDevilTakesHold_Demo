@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
     public GameObject lowerLevel;
     public GameObject upperLevel;
 
+    public static bool human;
+    public static bool spotted;
+    public static bool dialogueFinished;
+
     // Start is called before the first frame update
     void Start() {
         

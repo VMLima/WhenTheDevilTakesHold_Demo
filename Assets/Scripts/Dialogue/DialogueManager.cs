@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour {
 
     public void StartDialogue(Dialogue dialogue) {
         anim.SetBool("isOpen", true);
+        GameManager.dialogueFinished = false;
 
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -51,7 +52,13 @@ public class DialogueManager : MonoBehaviour {
 
     public void EndDialogue() {
         anim.SetBool("isOpen", false);
+        GameManager.dialogueFinished = true;
         Debug.Log("End of conversation");
+    }
+
+    public void ContinueDialogue() {
+        anim.SetBool("isOpen", true);
+        Debug.Log("Continuation of conversation");
     }
 
 }
