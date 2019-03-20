@@ -61,6 +61,10 @@ public class Cutscene : MonoBehaviour {
         if (GameManager.spotted && first) {
             StartCoroutine(FinishDemonCutScene());
             first = false;
+        } else if (!GameManager.spotted && first && demonGuard.transform.position.z > 0 && demonGuard.transform.position.z < 5) {
+            demon_Dialogue.TriggerDialogue();
+            StartCoroutine(FinishHumanCutScene());
+            first = false;
         }
 
         if(GameManager.dialogueFinished && finalDialogue) {
