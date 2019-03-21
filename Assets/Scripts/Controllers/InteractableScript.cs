@@ -6,11 +6,13 @@ public class InteractableScript : MonoBehaviour {
 
     //public GameObject player;
     public GameObject prompt;
+    public GameManager GM;
     private bool interacting;
     private ParticleSystem[] particles;
     
     void Start() {
         particles = transform.GetComponentsInChildren<ParticleSystem>();
+        GM = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class InteractableScript : MonoBehaviour {
             for (int i = 0; i < particles.Length; i++) {
                 particles[i].Play();
             }
+            GM.shrinesFound++;
             GetComponent<BoxCollider>().enabled = false;
             prompt.SetActive(false);
         }

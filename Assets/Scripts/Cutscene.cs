@@ -10,6 +10,7 @@ public class Cutscene : MonoBehaviour {
     public Text text;
     public GameObject demonGuard;
     public GameObject guides;
+    public GameManager GM;
 
     [Space(5)]
     public DialogueTrigger demon_Dialogue;
@@ -38,6 +39,8 @@ public class Cutscene : MonoBehaviour {
         fade.GetComponent<CanvasRenderer>().SetAlpha(1);
         StartCoroutine(FadeIn());
         tempSpeed = disableScripts[0].GetComponent<Controller>().speed;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update() {
@@ -50,7 +53,7 @@ public class Cutscene : MonoBehaviour {
             disableScripts[0].GetComponent<Controller>().temp = 0;
             demonGuard.SetActive(true);
             guides.SetActive(false);
-            GameManager.human = true;
+            GM.human = true;
             if (demonGuard.transform.position.z > 0 && demonGuard.transform.position.z < 5 && first) {
                 demon_Dialogue.TriggerDialogue();
                 StartCoroutine(FinishHumanCutScene());
@@ -58,16 +61,16 @@ public class Cutscene : MonoBehaviour {
             }
         }
 
-        if (GameManager.spotted && first) {
+        if (GM.spotted && first) {
             StartCoroutine(FinishDemonCutScene());
             first = false;
-        } else if (!GameManager.spotted && first && demonGuard.transform.position.z > 0 && demonGuard.transform.position.z < 5) {
+        } else if (!GM.spotted && first && demonGuard.transform.position.z > 0 && demonGuard.transform.position.z < 5) {
             demon_Dialogue.TriggerDialogue();
             StartCoroutine(FinishHumanCutScene());
             first = false;
         }
 
-        if(GameManager.dialogueFinished && finalDialogue) {
+        if(GM.dialogueFinished && finalDialogue) {
             this.gameObject.SetActive(false); // deactivate the tutorial
         }
     }
@@ -130,6 +133,7 @@ public class Cutscene : MonoBehaviour {
         demon_Dialogue2.TriggerDialogue();
         yield return new WaitForSeconds(5f);
         demonGuard.GetComponent<NavMeshAgent>().isStopped = false;
+        ToggleScripts(true);
         finalDialogue = true;
     }
 

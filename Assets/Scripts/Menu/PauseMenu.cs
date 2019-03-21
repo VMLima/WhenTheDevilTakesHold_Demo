@@ -43,6 +43,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void Return() {
         pause.gameObject.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
     }
 }

@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    public Transform player;
-    public GameObject lowerLevel;
-    public GameObject upperLevel;
+    public bool human;
+    public bool spotted;
+    public bool dialogueFinished;
+    public int shrineCount;
+    public int shrinesFound;
 
-    public static bool human;
-    public static bool spotted;
-    public static bool dialogueFinished;
+    private GameObject[] shrines;
 
-    // Start is called before the first frame update
-    void Start() {
-        
-    }
+    private void Start() {
+        //if (GM == null) GM = this;
+        //else if (GM != this) Destroy(gameObject);
 
-    // Update is called once per frame
-    void Update() {
-        if (player.position.y < -11) {
-            lowerLevel.SetActive(true);
-            upperLevel.SetActive(false);
-        } else {
-            lowerLevel.SetActive(false);
-            upperLevel.SetActive(true);
-        }
+        //DontDestroyOnLoad(this);
+
+        shrines = GameObject.FindGameObjectsWithTag("Shrine");
+        shrineCount = shrines.Length;
+
+        //Debug.Log(shrineCount);
     }
 }

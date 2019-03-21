@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GuardCheck : MonoBehaviour {
 
+    public DialogueTrigger trueDialogue;
+    public DialogueTrigger easterEgg;
+
     private bool triggered;
+    private int count = 1;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.E) && triggered) {
@@ -14,7 +18,13 @@ public class GuardCheck : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            GetComponent<DialogueTrigger>().TriggerDialogue();
+            if (count < 6) {
+                trueDialogue.TriggerDialogue();
+                count++;
+            } else if (count == 6) {
+                easterEgg.TriggerDialogue();
+                count = 0;
+            }
             triggered = true;
         }
     }

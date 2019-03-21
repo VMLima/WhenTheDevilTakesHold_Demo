@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour {
     public bool guard;
 
     public Transform player;
+    public GameManager GM;
     public float detectionDist;
     public float detectionAngle;
     public Vector3[] points;
@@ -27,6 +28,7 @@ public class EnemyController : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        GM = FindObjectOfType<GameManager>();
         GotoNextPoint();
     }
 
@@ -64,7 +66,7 @@ public class EnemyController : MonoBehaviour {
                     transform.LookAt(player);
                 //}
                 spotted = true;
-                GameManager.spotted = true;
+                GM.spotted = true;
             }
             if (hit.transform.tag != "Player" && spotted) {
                 step.Play();

@@ -8,6 +8,11 @@ public class EndScreen : MonoBehaviour {
 
     public CanvasGroup canvasGroup;
 
+    private void Start() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void LoadMainMenu() {
         StartCoroutine(SceneTransition());
     }

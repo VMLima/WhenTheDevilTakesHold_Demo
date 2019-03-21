@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 199863573264039842}
   m_Layer: 0
   m_Name: smoke
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 199188324512635950}
   m_Layer: 0
   m_Name: fire
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

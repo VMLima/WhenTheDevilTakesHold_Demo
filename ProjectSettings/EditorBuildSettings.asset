@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MazeLevel.unity
     guid: 0a217d5e211354c4e86a7a4c8dc3a4ce
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 6bc05769a32f5a74ebbbaf948298a4f0
   m_configObjects: {}

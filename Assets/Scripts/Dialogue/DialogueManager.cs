@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour {
     public Text nameText;
     public Text dialogueText;
 
+    public GameManager GM;
+
     public Animator anim;
 
     private Queue<string> sentences;
@@ -15,11 +17,12 @@ public class DialogueManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         sentences = new Queue<string>();
+        GM = FindObjectOfType<GameManager>();
     }
 
     public void StartDialogue(Dialogue dialogue) {
         anim.SetBool("isOpen", true);
-        GameManager.dialogueFinished = false;
+        GM.dialogueFinished = false;
 
         nameText.text = dialogue.name;
         sentences.Clear();
@@ -52,7 +55,7 @@ public class DialogueManager : MonoBehaviour {
 
     public void EndDialogue() {
         anim.SetBool("isOpen", false);
-        GameManager.dialogueFinished = true;
+        GM.dialogueFinished = true;
         Debug.Log("End of conversation");
     }
 
